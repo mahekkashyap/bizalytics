@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Data Analysis Project</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Real-World Business Data Analysis Using Python, MySQL, and Power BI</h1>
+    </header>
+
+    <main>
+        <section id="introduction">
+            <h2>Introduction</h2>
+            <p>Hi, I'm Mahek. Today, I'll demonstrate a business data analysis project to optimize revenue and reduce costs using Python, MySQL, and Power BI.</p>
+        </section>
+
+        <section id="setup">
+            <h2>Project Setup</h2>
+            <h3>Define Business Problem</h3>
+            <p>Our goal is to increase revenue and reduce costs.</h3>
+            <h3>Identify Data Sources</h3>
+            <p>We'll use sales data, marketing costs, customer feedback, and operational costs.</p>
+            <h3>Environment Setup</h3>
+            <p>Ensure you have Python, MySQL, and Power BI installed.</p>
+        </section>
+
+        <section id="data-collection">
+            <h2>Data Collection</h2>
+            <h3>Create MySQL Database and Tables</h3>
+            <pre><code>
+CREATE DATABASE BusinessData;
+USE BusinessData;
+
+CREATE TABLE Revenue (
+    date DATE,
+    amount DECIMAL(10, 2)
+);
+
+CREATE TABLE Costs (
+    date DATE,
+    amount DECIMAL(10, 2),
+    category VARCHAR(50)
+);
+
+CREATE TABLE CustomerFeedback (
+    date DATE,
+    feedback TEXT,
+    rating INT
+);
+            </code></pre>
+            <h3>Insert Sample Data</h3>
+            <p>Insert sample data into the tables as shown above.</p>
+        </section>
+
+        <section id="data-processing">
+            <h2>Data Processing and Analysis</h2>
+            <h3>Connect to MySQL Using Python</h3>
+            <pre><code>
+import mysql.connector
+import pandas as pd
+
+conn = mysql.connector.connect(
+    host="localhost",
+    user="yourusername",
+    password="yourpassword",
+    database="BusinessData"
+)
+
+revenue_df = pd.read_sql("SELECT * FROM Revenue", conn)
+costs_df = pd.read_sql("SELECT * FROM Costs", conn)
+feedback_df = pd.read_sql("SELECT * FROM CustomerFeedback", conn)
+            </code></pre>
+            <h3>Data Cleaning</h3>
+            <pre><code>
+revenue_df.dropna(inplace=True)
+costs_df.dropna(inplace=True)
+feedback_df.dropna(inplace=True)
+            </code></pre>
+            <h3>Data Analysis</h3>
+            <pre><code>
+total_revenue = revenue_df['amount'].sum()
+total_costs = costs_df['amount'].sum()
+average_rating = feedback_df['rating'].mean()
+roi = (total_revenue - total_costs) / total_costs
+
+print(f"Total Revenue: {total_revenue}")
+print(f"Total Costs: {total_costs}")
+print(f"Average Customer Rating: {average_rating}")
+print(f"ROI: {roi}")
+            </code></pre>
+            <p>Output:</p>
+            <pre><code>
+Total Revenue: 37000.0
+Total Costs: 10000.0
+Average Customer Rating: 4.0
+ROI: 2.7
+            </code></pre>
+        </section>
+
+        <section id="visualization">
+            <h2>Data Visualization</h2>
+            <p>Import the data into Power BI and create visualizations: line chart for revenue, bar chart for costs, gauge chart for customer rating, and card for ROI.</p>
+        </section>
+
+        <section id="decision-making">
+            <h2>Decision Making</h2>
+            <h3>Insights and Recommendations</h3>
+            <ul>
+                <li>Increase marketing budget if ROI is high.</li>
+                <li>Focus on high-rated products and services.</li>
+                <li>Reduce costs in categories with low returns.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>Thank you for watching! Reach out if you have questions.</p>
+    </footer>
+</body>
+</html>

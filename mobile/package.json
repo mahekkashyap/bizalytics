@@ -1,0 +1,32 @@
+{
+  "name": "petrol-pump-loyalty-mobile",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.21.0",
+    "@react-native-masked-view/masked-view": "^0.3.2",
+    "@react-navigation/native": "^6.1.9",
+    "@react-navigation/native-stack": "^6.9.17",
+    "axios": "^1.6.7",
+    "expo": "~51.0.0",
+    "expo-constants": "~15.0.0",
+    "expo-status-bar": "~1.12.1",
+    "firebase": "^10.12.0",
+    "react": "18.2.0",
+    "react-native": "0.74.0",
+    "react-native-gesture-handler": "^2.28.0",
+    "react-native-safe-area-context": "4.8.2",
+    "react-native-screens": "~3.32.0"
+  },
+  "devDependencies": {
+    "babel-preset-expo": "~11.0.0",
+    "dotenv": "^16.4.5"
+  }
+}
